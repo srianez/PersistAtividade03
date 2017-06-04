@@ -7,14 +7,21 @@ import javax.persistence.EntityManager;
 import br.com.atividade03.utils.Dao;
 import br.com.atividade03.utils.JpaUtil;
 
+
 public class GenericDao<T> implements Dao<T> {
+	//classe que controla a persistencia de qualquer classe
+	
 	private final Class<T> classe;
+	
+	
 	protected EntityManager em;
 
+	
 	public GenericDao(Class<T> classe) {
 		this.classe = classe;
 	}
 
+	
 	@Override
 	public void adicionar(T entidade) {
 		em = JpaUtil.getEntityManager();
@@ -24,6 +31,7 @@ public class GenericDao<T> implements Dao<T> {
 		em.close();
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> listar() {
@@ -31,6 +39,7 @@ public class GenericDao<T> implements Dao<T> {
 		return em.createQuery("From " + classe.getSimpleName()).getResultList();
 	}
 
+	
 	@Override
 	public void atualizar(T entidade) {
 		em = JpaUtil.getEntityManager();
@@ -40,6 +49,7 @@ public class GenericDao<T> implements Dao<T> {
 		em.close();
 	}
 
+	
 	@Override
 	public void remover(T entidade) {
 		em = JpaUtil.getEntityManager();
@@ -49,6 +59,7 @@ public class GenericDao<T> implements Dao<T> {
 		em.close();
 	}
 
+	
 	@Override
 	public T buscar(int id) {
 		em = JpaUtil.getEntityManager();
@@ -58,4 +69,5 @@ public class GenericDao<T> implements Dao<T> {
 		em.close();
 		return entidade;
 	}
+	
 }
