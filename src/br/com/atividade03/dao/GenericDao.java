@@ -26,7 +26,7 @@ public class GenericDao<T> implements Dao<T> {
 	public void adicionar(T entidade) {
 		em = JpaUtil.getEntityManager();
 		em.getTransaction().begin();
-		em.persist(entidade);
+		em.persist(entidade); //insere
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -44,7 +44,7 @@ public class GenericDao<T> implements Dao<T> {
 	public void atualizar(T entidade) {
 		em = JpaUtil.getEntityManager();
 		em.getTransaction().begin();
-		em.merge(entidade);
+		em.merge(entidade); //atualiza
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -54,7 +54,7 @@ public class GenericDao<T> implements Dao<T> {
 	public void remover(T entidade) {
 		em = JpaUtil.getEntityManager();
 		em.getTransaction().begin();
-		em.remove(em.merge(entidade));
+		em.remove(em.merge(entidade)); //remove
 		em.getTransaction().commit();
 		em.close();
 	}
