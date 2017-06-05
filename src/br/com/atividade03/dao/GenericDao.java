@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.com.atividade03.utils.Dao;
 import br.com.atividade03.utils.JpaUtil;
 
 
@@ -13,10 +12,8 @@ public class GenericDao<T> implements Dao<T> {
 	
 	private final Class<T> classe;
 	
-	
 	protected EntityManager em;
 
-	
 	public GenericDao(Class<T> classe) {
 		this.classe = classe;
 	}

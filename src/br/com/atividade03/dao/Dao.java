@@ -1,4 +1,4 @@
-package br.com.atividade03.utils;
+package br.com.atividade03.dao;
 
 import java.util.List;
 
