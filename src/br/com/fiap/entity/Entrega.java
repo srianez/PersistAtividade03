@@ -19,8 +19,8 @@ public class Entrega implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "idEntrega")
+	private int idEntrega;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id")
@@ -29,12 +29,12 @@ public class Entrega implements Serializable{
 	@Column(name = "nome_item", length = 50)
 	private String nomeItem;
 
-	public int getId() {
-		return id;
+	public int getIdEntrega() {
+		return idEntrega;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdEntrega(int idEntrega) {
+		this.idEntrega = idEntrega;
 	}
 
 	public Caminhao getCaminhao() {

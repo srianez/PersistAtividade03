@@ -19,29 +19,29 @@ public class Caminhao implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "idCaminhao")
+	private int idCaminhao;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cnpj")
-	private Transportadoras transportadora;
+	private Transportadora transportadora;
 
 	@Column(name = "placa", length = 45)
 	private String placa;
 
 	public int getId() {
-		return id;
+		return idCaminhao;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int idCaminhao) {
+		this.idCaminhao = idCaminhao;
 	}
 
-	public Transportadoras getTransportadora() {
+	public Transportadora getTransportadora() {
 		return transportadora;
 	}
 
-	public void setTransportadora(Transportadoras transportadora) {
+	public void setTransportadora(Transportadora transportadora) {
 		this.transportadora = transportadora;
 	}
 }
