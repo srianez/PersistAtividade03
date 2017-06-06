@@ -1,4 +1,4 @@
-package br.com.atividade03.programa;
+package br.com.fiap.programa;
 
 import java.util.Date;
 import java.util.List;
