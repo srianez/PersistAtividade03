@@ -6,65 +6,64 @@ import java.util.List;
 
 import br.com.fiap.dao.GenericDao;
 import br.com.fiap.entity.Caminhao;
-import br.com.fiap.entity.Transportadoras;
+import br.com.fiap.entity.Entrega;
+import br.com.fiap.entity.Transportadora;
 
 
 public class Testar {
 
 	public static void main(String[] args) {
 
-		Transportadoras clientes = new Transportadoras();
-		clientes.setNome("Mario Kart");
-		clientes.setEmail("xxxxxxx@gmail.com");
-
-		GenericDao<Transportadoras> daoCli = new GenericDao<Transportadoras>(Transportadoras.class);
-		GenericDao<Caminhao> daoPed = new GenericDao<Caminhao>(Caminhao.class);
-
-		daoCli.adicionar(clientes);
-
-		System.out.println("=================================================================================");
-		System.out.println("Cliente " + clientes.getNome() +" adicionado");
-		System.out.println("=================================================================================");
-
-	    Caminhao pedidos = new Caminhao();
-	    pedidos.setClientes(clientes);
-	    pedidos.setData(new Date());
-	    pedidos.setDescricao("Celular Iphone 8");
-	    pedidos.setValor(9.999);
-	    
-	    daoPed.adicionar(pedidos);
-
-		System.out.println("=================================================================================");
-		System.out.println("Pedido " + pedidos.getIdpedido() +" adicionado para o cliente " + pedidos.getClientes().getNome());
-		System.out.println("=================================================================================");	    
+		//carrega transportadora
+		Transportadora transportadora = new Transportadora();
+		transportadora.setNome("TransFiap");
 		
+		//carrega objeto caminhao
+		Caminhao caminhao = new Caminhao();
 		
-		System.out.println("Executando o método listar...");
+		caminhao.setPlaca("GGB-7174");
+		caminhao.setTransportadora(transportadora);
 		
-		// Recuperar clientes
-		List<Transportadoras> lisclientes = daoCli.listar();
-		for (Transportadoras cliente : lisclientes) {
-			System.out.println("Result dao.listar = " + cliente.getNome() + " - " + cliente.getEmail());
-		}
+		Entrega entrega = new Entrega();
+		entrega.setCaminhao(caminhao);
+		entrega.setNomeItem("Notebook Dell");
 
+		GenericDao<Transportadora> daoTrans = new GenericDao<Transportadora>(Transportadora.class);
+		GenericDao<Caminhao> daoCam = new GenericDao<Caminhao>(Caminhao.class);
+		GenericDao<Entrega> daoEnt = new GenericDao<Entrega>(Entrega.class);
 
-		System.out.println("=================================================================================");
-		System.out.println("Buscando Cliente Pelo ID: ");
-		System.out.println("=================================================================================");	
-
-		// Busca cliente pelo ID
-		Transportadoras x = new Transportadoras();
-		x = (Transportadoras) daoCli.buscar(1);
-		System.out.println("Result por id: " + x.getIdcliente() + " - " + x.getNome());
+		daoTrans.adicionar(transportadora); //insere a transportadora
+		System.out.println("Transportadora " + transportadora.getNome() +" adicionada");
 		
-		System.out.println("Atualizando cliente.");
-		daoCli.atualizar(clientes);
-
-		System.out.println("Removendo pedido.");
-		daoPed.remover(pedidos);
+		daoCam.adicionar(caminhao); //insere o caminhao
+		System.out.println("Caminhao " + caminhao.getPlaca() +" adicionado");
 		
-		System.out.println("Removendo cliente.");
-		daoCli.remover(clientes);
+		daoEnt.adicionar(entrega); //insere a entrega 
+		System.out.println("Entrega do item " + entrega.getNomeItem()+" adicionada");
+    
+
+		
+//		// Recuperar clientes
+//		List<Transportadora> lisclientes = daoCli.listar();
+//		for (Transportadora cliente : lisclientes) {
+//			System.out.println("Result dao.listar = " + cliente.getNome() + " - " + cliente.getEmail());
+//		}
+//
+//
+//
+//		// Busca cliente pelo ID
+//		Transportadora x = new Transportadora();
+//		x = (Transportadora) daoCli.buscar(1);
+//		System.out.println("Result por id: " + x.getIdcliente() + " - " + x.getNome());
+//		
+//		System.out.println("Atualizando cliente.");
+//		daoCli.atualizar(clientes);
+//
+//		System.out.println("Removendo pedido.");
+//		daoPed.remover(pedidos);
+//		
+//		System.out.println("Removendo cliente.");
+//		daoCli.remover(clientes);
 
 	}
 
