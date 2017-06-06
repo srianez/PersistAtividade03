@@ -3,9 +3,9 @@ package br.com.atividade03.programa;
 import java.util.Date;
 import java.util.List;
 
-import br.com.atividade03.dao.GenericDao;
 import br.com.atividade03.entity.Clientes;
 import br.com.atividade03.entity.Pedidos;
+import br.com.fiap.dao.GenericDao;
 
 public class Testar {
 

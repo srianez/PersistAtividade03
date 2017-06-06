@@ -1,10 +1,10 @@
-package br.com.atividade03.dao;
+package br.com.fiap.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.com.atividade03.utils.JpaUtil;
+import br.com.fiap.utils.JpaUtil;
 
 
 public class GenericDao<T> implements Dao<T> {
