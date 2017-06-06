@@ -3,20 +3,22 @@ package br.com.atividade03.programa;
 import java.util.Date;
 import java.util.List;
 
-import br.com.atividade03.entity.Clientes;
-import br.com.atividade03.entity.Pedidos;
+
 import br.com.fiap.dao.GenericDao;
+import br.com.fiap.entity.Caminhao;
+import br.com.fiap.entity.Transportadoras;
+
 
 public class Testar {
 
 	public static void main(String[] args) {
 
-		Clientes clientes = new Clientes();
+		Transportadoras clientes = new Transportadoras();
 		clientes.setNome("Mario Kart");
 		clientes.setEmail("xxxxxxx@gmail.com");
 
-		GenericDao<Clientes> daoCli = new GenericDao<Clientes>(Clientes.class);
-		GenericDao<Pedidos> daoPed = new GenericDao<Pedidos>(Pedidos.class);
+		GenericDao<Transportadoras> daoCli = new GenericDao<Transportadoras>(Transportadoras.class);
+		GenericDao<Caminhao> daoPed = new GenericDao<Caminhao>(Caminhao.class);
 
 		daoCli.adicionar(clientes);
 
@@ -24,7 +26,7 @@ public class Testar {
 		System.out.println("Cliente " + clientes.getNome() +" adicionado");
 		System.out.println("=================================================================================");
 
-	    Pedidos pedidos = new Pedidos();
+	    Caminhao pedidos = new Caminhao();
 	    pedidos.setClientes(clientes);
 	    pedidos.setData(new Date());
 	    pedidos.setDescricao("Celular Iphone 8");
@@ -37,11 +39,11 @@ public class Testar {
 		System.out.println("=================================================================================");	    
 		
 		
-		System.out.println("Executando o método listar...");
+		System.out.println("Executando o mÃ©todo listar...");
 		
 		// Recuperar clientes
-		List<Clientes> lisclientes = daoCli.listar();
-		for (Clientes cliente : lisclientes) {
+		List<Transportadoras> lisclientes = daoCli.listar();
+		for (Transportadoras cliente : lisclientes) {
 			System.out.println("Result dao.listar = " + cliente.getNome() + " - " + cliente.getEmail());
 		}
 
@@ -51,8 +53,8 @@ public class Testar {
 		System.out.println("=================================================================================");	
 
 		// Busca cliente pelo ID
-		Clientes x = new Clientes();
-		x = (Clientes) daoCli.buscar(1);
+		Transportadoras x = new Transportadoras();
+		x = (Transportadoras) daoCli.buscar(1);
 		System.out.println("Result por id: " + x.getIdcliente() + " - " + x.getNome());
 		
 		System.out.println("Atualizando cliente.");
