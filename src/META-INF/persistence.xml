@@ -6,9 +6,10 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>br.com.fiap.entity.Transportadora</class>
 		<class>br.com.fiap.entity.Caminhao</class>
+		<class>br.com.fiap.entity.Entrega</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projetofinal" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projetofinal?createIfNotExists" />
 			<property name="javax.persistence.jdbc.user" value="fiap" />
 			<property name="javax.persistence.jdbc.password" value="fiap" />
  			<property name="hibernate.hbm2ddl.auto" value="update" />

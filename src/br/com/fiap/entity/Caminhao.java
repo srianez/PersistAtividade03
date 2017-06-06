@@ -19,8 +19,8 @@ public class Caminhao implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "idCaminhao")
+	private int idCaminhao;
 	
 	@Column(name = "placa", length = 45)
 	private String placa;
@@ -39,11 +39,11 @@ public class Caminhao implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return idCaminhao;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int idCaminhao) {
+		this.idCaminhao = idCaminhao;
 	}
 
 	public Transportadora getTransportadora() {
