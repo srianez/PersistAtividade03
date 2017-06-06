@@ -21,13 +21,22 @@ public class Caminhao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cnpj")
-	private Transportadoras transportadora;
-
+	
 	@Column(name = "placa", length = 45)
 	private String placa;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cnpj")
+	private Transportadora transportadora;
+
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 
 	public int getId() {
 		return id;
@@ -37,11 +46,11 @@ public class Caminhao implements Serializable {
 		this.id = id;
 	}
 
-	public Transportadoras getTransportadora() {
+	public Transportadora getTransportadora() {
 		return transportadora;
 	}
 
-	public void setTransportadora(Transportadoras transportadora) {
+	public void setTransportadora(Transportadora transportadora) {
 		this.transportadora = transportadora;
 	}
 }
