@@ -8,7 +8,7 @@ import br.com.fiap.utils.JpaUtil;
 
 
 public class GenericDao<T> implements Dao<T> {
-	//classe que controla a persistencia de qualquer classe
+	//classe que controla a persistencia de qualquer objeto
 	
 	private final Class<T> classe;
 	
@@ -57,14 +57,14 @@ public class GenericDao<T> implements Dao<T> {
 	}
 
 	
-	@Override
-	public T buscar(int id) {
-		em = JpaUtil.getEntityManager();
-		em.getTransaction().begin();
-		T entidade = em.find(classe, id);
-		em.getTransaction().commit();
-		em.close();
-		return entidade;
-	}
+//	@Override
+//	public T buscar(int id) {
+//		em = JpaUtil.getEntityManager();
+//		em.getTransaction().begin();
+//		T entidade = em.find(classe, id);
+//		em.getTransaction().commit();
+//		em.close();
+//		return entidade;
+//	}
 	
 }

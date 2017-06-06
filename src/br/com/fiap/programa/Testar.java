@@ -16,17 +16,19 @@ public class Testar {
 
 		//carrega transportadora
 		Transportadora transportadora = new Transportadora();
-		transportadora.setNome("TransFiap");
+		transportadora.setNome("TransBonita");
 		
 		//carrega objeto caminhao
 		Caminhao caminhao = new Caminhao();
 		
-		caminhao.setPlaca("GGB-7174");
+		caminhao.setPlaca("ABC-9999");
 		caminhao.setTransportadora(transportadora);
 		
+		//carrega objeto entrega
 		Entrega entrega = new Entrega();
+		
 		entrega.setCaminhao(caminhao);
-		entrega.setNomeItem("Notebook Dell");
+		entrega.setNomeItem("Carro Ferrari");
 
 		GenericDao<Transportadora> daoTrans = new GenericDao<Transportadora>(Transportadora.class);
 		GenericDao<Caminhao> daoCam = new GenericDao<Caminhao>(Caminhao.class);
@@ -41,31 +43,42 @@ public class Testar {
 		daoEnt.adicionar(entrega); //insere a entrega 
 		System.out.println("Entrega do item " + entrega.getNomeItem()+" adicionada");
     
+		
+		System.out.println("========== Lista de caminhões cadastrados ==========");
+		
+		List<Caminhao> listcaminhao = daoCam.listar();
+		for (Caminhao lcaminhao : listcaminhao) {
+			System.out.println("Caminhão: " + lcaminhao.getPlaca());
+		}
+		
+		System.out.println("====================================================");
+		
+		
+		System.out.println("========== Lista de transportadoras cadastradas ==========");
+		
+		List<Transportadora> listTrans = daoTrans.listar();
+		for (Transportadora lTransportadora : listTrans) {
+			System.out.println("Transportadora: " + lTransportadora.getNome());
+		}
+		
+		System.out.println("====================================================");
 
 		
-//		// Recuperar clientes
-//		List<Transportadora> lisclientes = daoCli.listar();
-//		for (Transportadora cliente : lisclientes) {
-//			System.out.println("Result dao.listar = " + cliente.getNome() + " - " + cliente.getEmail());
-//		}
-//
-//
-//
-//		// Busca cliente pelo ID
-//		Transportadora x = new Transportadora();
-//		x = (Transportadora) daoCli.buscar(1);
-//		System.out.println("Result por id: " + x.getIdcliente() + " - " + x.getNome());
-//		
-//		System.out.println("Atualizando cliente.");
-//		daoCli.atualizar(clientes);
-//
-//		System.out.println("Removendo pedido.");
-//		daoPed.remover(pedidos);
-//		
-//		System.out.println("Removendo cliente.");
-//		daoCli.remover(clientes);
+		System.out.println("================ Lista de entregas =================");
+		List<Entrega> listEnt = daoEnt.listar();
+		for (Entrega lEntrega : listEnt) {
+			System.out.println("Entrega do item " + lEntrega.getNomeItem() + " efetuada pelo caminhão " +  lEntrega.getCaminhao().getPlaca()  +
+					           " da transportadora " + lEntrega.getCaminhao().getTransportadora().getNome());
+		}	
+		System.out.println("====================================================");
+
+		
+		System.out.println("Atualizando Caminhão " + caminhao.getId() + " de placa " + caminhao.getPlaca());
+		daoCam.atualizar(caminhao);
+
+		System.out.println("Removendo entrega " + entrega.getIdEntrega()+ " do item " + entrega.getNomeItem() + " realizada pelo caminhão " + entrega.getCaminhao() );
+		daoEnt.remover(entrega);
 
 	}
-
 
 }

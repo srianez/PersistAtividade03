@@ -11,5 +11,5 @@ public interface Dao<T> {
 
 	void remover(T entidade);
 
-	T buscar(int id);
+	//T buscar(int id);
 }
