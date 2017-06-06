@@ -3,9 +3,11 @@ package br.com.atividade03.programa;
 import java.util.Date;
 import java.util.List;
 
-import br.com.atividade03.dao.GenericDao;
+
+import br.com.fiap.dao.GenericDao;
 import br.com.fiap.entity.Caminhao;
 import br.com.fiap.entity.Transportadoras;
+
 
 public class Testar {
 
@@ -37,7 +39,7 @@ public class Testar {
 		System.out.println("=================================================================================");	    
 		
 		
-		System.out.println("Executando o método listar...");
+		System.out.println("Executando o mÃ©todo listar...");
 		
 		// Recuperar clientes
 		List<Transportadoras> lisclientes = daoCli.listar();

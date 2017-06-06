@@ -1,4 +1,4 @@
-package br.com.atividade03.dao;
+package br.com.fiap.dao;
 
 import java.util.List;
 
