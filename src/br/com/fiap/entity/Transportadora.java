@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "transportadora", schema = "projetofinal")
-public class Transportadoras implements Serializable {
+public class Transportadora implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
