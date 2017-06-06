@@ -35,8 +35,7 @@ public class Testar {
 		System.out.println("=================================================================================");
 		System.out.println("Pedido " + pedidos.getIdpedido() +" adicionado para o cliente " + pedidos.getClientes().getNome());
 		System.out.println("=================================================================================");	    
-		
-		
+			
 		System.out.println("Executando o método listar...");
 		
 		// Recuperar clientes
@@ -65,6 +64,5 @@ public class Testar {
 		daoCli.remover(clientes);
 
 	}
-
 
 }
