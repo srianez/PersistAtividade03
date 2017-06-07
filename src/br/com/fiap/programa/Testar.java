@@ -1,8 +1,12 @@
 package br.com.fiap.programa;
 
-import java.util.Date;
 import java.util.List;
 
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import br.com.fiap.dao.GenericDao;
 import br.com.fiap.entity.Caminhao;
@@ -14,21 +18,55 @@ public class Testar {
 
 	public static void main(String[] args) {
 
+
+		JTextField TransportadoraField = new JTextField(40);		
+		JTextField CaminhaoField = new JTextField(20);	
+		JTextField EntregaField = new JTextField(20);
+	    //JTextField yField = new JTextField(5);
+
 		//carrega transportadora
+	    JPanel TransportadoraPanel = new JPanel();
+	    TransportadoraPanel.add(new JLabel("Informe o nome da trasportadora:"));
+	    TransportadoraPanel.add(TransportadoraField);
+	    
+	    //caso precise criar mais de um campo no mesmo panel (popup)
+	    //myPanel.add(Box.createHorizontalStrut(15));
+	    //myPanel.add(new JLabel("y:"));
+	    //myPanel.add(yField);
+
+	    //teste do valor imputado
+	    //if (result == JOptionPane.OK_OPTION) {
+	      //System.out.println("x value: " + TransportadoraField.getText());
+	      //System.out.println("y value: " + yField.getText());
+	    //}
+	    
+	    int result = JOptionPane.showConfirmDialog(null, TransportadoraPanel, "Transportadora", JOptionPane.OK_CANCEL_OPTION);
+		
 		Transportadora transportadora = new Transportadora();
-		transportadora.setNome("TransBonita");
+		transportadora.setNome(TransportadoraField.getText());
+	
+	    
+	    //carrega objeto caminhao
+	    JPanel CaminhaoPanel = new JPanel();
+	    CaminhaoPanel.add(new JLabel("Informe a placa do caminhão:"));
+	    CaminhaoPanel.add(CaminhaoField);	
+		int resultx = JOptionPane.showConfirmDialog(null, CaminhaoPanel, "Caminhão", JOptionPane.OK_CANCEL_OPTION);
 		
-		//carrega objeto caminhao
-		Caminhao caminhao = new Caminhao();
-		
-		caminhao.setPlaca("ABC-9999");
+	    Caminhao caminhao = new Caminhao();
+		caminhao.setPlaca(CaminhaoField.getText());
 		caminhao.setTransportadora(transportadora);
 		
+		
 		//carrega objeto entrega
-		Entrega entrega = new Entrega();
+	    JPanel EntregaPanel = new JPanel();
+	    EntregaPanel.add(new JLabel("Informe o Item da entrega:"));
+	    EntregaPanel.add(EntregaField);	
+		int resulty = JOptionPane.showConfirmDialog(null, EntregaPanel, "Entrega", JOptionPane.OK_CANCEL_OPTION);
+
+	    Entrega entrega = new Entrega();
 		
 		entrega.setCaminhao(caminhao);
-		entrega.setNomeItem("Carro Ferrari");
+		entrega.setNomeItem(EntregaField.getText());
 
 		GenericDao<Transportadora> daoTrans = new GenericDao<Transportadora>(Transportadora.class);
 		GenericDao<Caminhao> daoCam = new GenericDao<Caminhao>(Caminhao.class);
